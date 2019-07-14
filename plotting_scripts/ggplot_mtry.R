@@ -15,8 +15,9 @@ mtries = seq(1, 10, 2)
 at_K=seq(50, 200, 50)
 a_arr = c(2, 2, 2, 2, 52, 52, 52, 52, 102, 102, 102, 102, 152, 152, 152, 152, 202, 202, 202, 202, 252, 252, 252, 252, 302, 302, 302, 302, 352, 352, 352, 352, 402, 402, 402, 402, 452, 452, 452, 452)
 
-
-load("rotation_linear_version4_varying_dims_vary_mtry.Rdata")
+print('loading linear data...')
+#load("rotation_linear_version4_varying_dims_vary_mtry.Rdata")
+load("normalization_linear_version4_varying_dims_vary_mtry.Rdata")
 #print(main_list[1:4])
 counter=1
 cnt = 1
@@ -24,6 +25,7 @@ precision_df_list = list()
 
 nb.cols <- 10
 mycolors <- colorRampPalette(brewer.pal(15, "Set2"))(nb.cols)
+#mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
 for (minp in mtries){
     a = counter
     b = counter+3
@@ -44,7 +46,7 @@ p2 <- ggplot(comb_df, aes(x=at_k, y=precision, color=Mtry)) +
 
 
 
-
+print('loading mixture of gaussians data...')
 load("normalization_mog_version4_varying_dims_vary_mtry.Rdata")
 counter=1
 cnt=1
@@ -66,8 +68,9 @@ p1 <- ggplot(comb_df, aes(x=at_k, y=precision, color=Mtry)) +
     ggtitle("Gaussian Mixture") + geom_line(alpha=0.9, show.legend = TRUE) + geom_point(alpha=0.9, show.legend = TRUE) + xlab('K') +  ylab(NULL) + scale_x_continuous(breaks=at_K) +  scale_y_continuous(breaks=c(0, 0.2, 0.4, 0.6, 0.8, 1.0), limits = c(0, 1), labels=NULL)
 
 
-
-load("rotation_sphere_version4_varying_dims_vary_mtry.Rdata")
+print('loading sphere data...')
+#load("rotation_sphere_version4_varying_dims_vary_mtry.Rdata")
+load("normalization_sphere_version4_varying_dims_vary_mtry.Rdata")
 counter=1
 cnt=1
 precision_df_list = list()
@@ -86,7 +89,7 @@ p3 <- ggplot(comb_df, aes(x=at_k, y=precision, color=Mtry)) +scale_fill_manual(v
 
 
 
-
+print('loading helix data ...')
 load("normalization_helix_version4_varying_dims_vary_mtry.Rdata")
 counter=1
 cnt=1
